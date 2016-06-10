@@ -8,7 +8,7 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 
 public class Repository {
 
-    private static final String REPO_DIRECTORY = "./repos";
+    private static final String REPO_DIRECTORY = "repos";
 
     private String name = "";
 
@@ -22,7 +22,7 @@ public class Repository {
         this.uri = uri;
         this.name = uri.substring(uri.lastIndexOf('/') + 1);
 
-        this.directory = new File(REPO_DIRECTORY + "/" + name);
+        this.directory = new File(REPO_DIRECTORY + System.getProperty("file.separator") + name);
     }
 
     public String getName() {
@@ -39,7 +39,7 @@ public class Repository {
 
         if (this.directory.exists() && this.directory.isDirectory()) {
             try {
-                this.git = Git.open(new File(this.directory.getPath() + "/.git"));
+                this.git = Git.open(new File(this.directory.getPath() + System.getProperty("file.separator") + ".git"));
             } catch (IOException e) {
                 System.out.println("error to set git folder");
 
