@@ -2,7 +2,9 @@ package repository;
 
 public class AnalysisUnit {
     
-    private String filename = "";
+    private String filename1 = "";
+    
+    private String filename2 = "";
 
     private String commit1 = "";
 
@@ -12,12 +14,20 @@ public class AnalysisUnit {
 
     private int lastline = 0;
 
-    public String getFilename() {
-        return filename;
+    public String getFilename1() {
+        return filename1;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
+    public void setFilename1(String filename1) {
+        this.filename1 = filename1;
+    }
+
+    public String getFilename2() {
+        return filename2;
+    }
+
+    public void setFilename2(String filename2) {
+        this.filename2 = filename2;
     }
 
     public String getCommit1() {
