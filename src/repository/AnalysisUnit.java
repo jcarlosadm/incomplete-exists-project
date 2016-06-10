@@ -1,6 +1,8 @@
 package repository;
 
 public class AnalysisUnit {
+    
+    private String filename = "";
 
     private String commit1 = "";
 
@@ -9,6 +11,14 @@ public class AnalysisUnit {
     private int firstline = 0;
 
     private int lastline = 0;
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 
     public String getCommit1() {
         return commit1;
