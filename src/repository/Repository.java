@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.ResetCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 
 public class Repository {
@@ -52,6 +53,28 @@ public class Repository {
         } catch (GitAPIException e) {
             System.out.println("error to clone repository");
         }
+    }
+    
+    public boolean checkout(String hash) {
+        try {
+            this.git.checkout().setName(hash).call();
+            return true;
+        } catch(Exception e) {
+            System.out.println("Não foi possível dar o checkout no commit: " + hash + ", resetando para tentar de novo");
+        }
+        try {
+            git.reset().setMode(ResetCommand.ResetType.HARD).call();
+            git.checkout().setName(hash).call();
+            return true;
+        } catch(Exception e) {
+            e.printStackTrace();
+            System.out.println("Não foi possível dar o checkout no commit: " + hash);
+            return false;
+        }
+    }
+    
+    public boolean checkoutMaster(){
+        return this.checkout("master");
     }
 
 }
