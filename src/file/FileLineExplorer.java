@@ -33,7 +33,7 @@ public class FileLineExplorer {
 
             String line = "";
             for (int lineIndex = 0; lineIndex < lastline; lineIndex++) {
-                line = bufferedReader.readLine().replaceAll("\\s+", "");
+                line = bufferedReader.readLine();
                 if (lineIndex >= (firstline - 1) && lineIndex <= (lastline - 1)) {
                     lines.add(line);
                 }
@@ -66,7 +66,7 @@ public class FileLineExplorer {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 
             for (String line; (line = bufferedReader.readLine()) != null;) {
-                if (lines.get(currentOriginalLineIndex).equals(line.replaceAll("\\s+", ""))) {
+                if (lines.get(currentOriginalLineIndex).equals(line)) {
                     currentOriginalLineIndex++;
                     someLineFound = true;
                 }
