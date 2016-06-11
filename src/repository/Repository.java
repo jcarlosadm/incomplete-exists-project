@@ -35,12 +35,16 @@ public class Repository {
     }
 
     public void cloneRepository() {
-        if (git != null)
+        if (this.git != null){
+            this.git.pull();
             return;
+        }
+            
 
         if (this.directory.exists() && this.directory.isDirectory()) {
             try {
                 this.git = Git.open(new File(this.directory.getPath() + System.getProperty("file.separator") + ".git"));
+                //this.git.pull();
             } catch (IOException e) {
                 System.out.println("error to set git folder");
 
@@ -67,7 +71,6 @@ public class Repository {
             git.checkout().setName(hash).call();
             return true;
         } catch(Exception e) {
-            e.printStackTrace();
             System.out.println("Não foi possível dar o checkout no commit: " + hash);
             return false;
         }
@@ -75,6 +78,10 @@ public class Repository {
     
     public boolean checkoutMaster(){
         return this.checkout("master");
+    }
+    
+    public static String getRepoDirectory(){
+        return REPO_DIRECTORY;
     }
 
 }

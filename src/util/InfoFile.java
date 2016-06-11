@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import repository.AnalysisUnit;
+import analysis.AnalysisUnit;
 import repository.Repository;
 
 public class InfoFile {
@@ -32,10 +32,9 @@ public class InfoFile {
 
     private InfoFile() {
         File file = new File(INFOFILE_PATH);
-
-        BufferedReader bufferedReader = null;
+        
         try {
-            bufferedReader = new BufferedReader(new FileReader(file));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 
             Repository repo = null;
             for (String line; (line = bufferedReader.readLine()) != null;) {
@@ -69,8 +68,8 @@ public class InfoFile {
         int lastIndex = parts.length - 1;
 
         // remove '[' and ']'
-        parts[0] = parts[0].substring(1, parts[0].length() - 1);
-        parts[lastIndex] = parts[lastIndex].substring(0, parts[lastIndex].length() - 2);
+        parts[0] = parts[0].substring(1, parts[0].length());
+        parts[lastIndex] = parts[lastIndex].substring(0, parts[lastIndex].length() - 1);
 
         // remove white spaces
         for (int index = 0; index < parts.length; index++) {

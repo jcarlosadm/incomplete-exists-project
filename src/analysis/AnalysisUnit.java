@@ -1,4 +1,4 @@
-package repository;
+package analysis;
 
 public class AnalysisUnit {
     
@@ -13,6 +13,8 @@ public class AnalysisUnit {
     private int firstline = 0;
 
     private int lastline = 0;
+    
+    private String result = "";
 
     public String getFilename1() {
         return filename1;
@@ -64,6 +66,14 @@ public class AnalysisUnit {
         } else {
             System.out.println("last line " + lastline + " smaller than first line");
         }
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 
 }
